@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content />
+        <meta name="keywords" content />
+        <title>Hackathon</title>
+        <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16">
+
+        <link rel="stylesheet" href="css/main.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/color.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./js/protected.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="./js/network.js" defer></script>
+        <script>navigator.serviceWorker.register("js/service-worker.js")</script> 
+<link rel="manifest" href="manifest.json" />
+
+
+    </head>
+    <body>
+        <div class="message-toast" id="messageToast">
+            <button class="close-btn" onclick="closeToast()">X</button>
+        </div>
+        <div class="theme-layout">
+
+            <div class="responsive-header">
+                <div class="mh-head first Sticky">
+                    <span class="mh-btns-left">
+                        <a class href="#menu"><i
+                                class="fa fa-align-justify"></i></a>
+                    </span>
+                    <span class="mh-text">
+                        <a href="newsfeed.html" title><img
+                                src="images/logo.png" alt class="logo-img"></a>
+                    </span>
+                   
+                </div>
+                <div class="mh-head second">
+                    <form class="mh-form">
+                        <input placeholder="search" />
+                        <a href="#/" class="fa fa-search"></a>
+                    </form>
+                </div>
+                <nav id="menu" class="res-menu">
+                    <ul>
+						<li><a href="index.html" title="">Home</a></li>
+						<li><a href="newsfeed.html" title="">Community</a></li>
+                        <li><a href="journal.html" title> Daily Journal</a></li>
+
+						<li><a href="groups.html" title="">Book Appointment</a></li>
+						<li><a href="messages.html" title="">Messages</a></li>
+						<li><a href="edit-account-setting.html" title="">edit account setting</a></li>
+						<li><a href="edit-password.html" title="">edit-password</a></li>
+						<li><a href="logout.html" title="">Logout</a></li>
+			         </ul>
+                </nav>
+                
+            </div><!-- responsive header -->
+
+            <div class="topbar stick">
+                <div class="logo">
+                    <a title href="newsfeed.html"><img src="images/logo.png" class="logo-img"
+                            alt></a>
+                </div>
+
+                <div class="top-area">
+                    <ul class="main-menu">
+                        <li>
+							<a href="index.html" title="">Home</a>
+
+						</li>
+                        <li>
+                            <a href="newsfeed.html" title>Community</a>
+                        
+                        </li>
+                        <li><a href="journal.html" title> Daily Journal</a></li>
+                        
+    
+                    
+                        <li><a href="groups.html" title>book
+                            Appointment</a></li>
+                    
+                
+    
+    
+                    </ul>
+                        <ul class="main-menu menu-2">
+    
+                    
+                    <li>
+                        <a><img src="images/resources/defaultpic.jpg" alt class="adminlogo"></a>
+    
+                        <ul>
+                        
+                            <li>
+                                <a id="username"><i class="ti-user"></i></a>
+                            </li>
+                            <li>
+                                <a href="edit-account-setting.html" title>edit account
+                                    setting</a>
+                            </li>
+                            <li>
+                                <a href="edit-password.html" title>edit-password</a>
+                            </li>
+                                <li>
+                                    <a href="logout.html" title><i class="ti-power-off"></i>log out</a>
+                                </li>
+                            
+                                
+                                
+                                
+                            
+                        </ul>
+    
+                    </li>
+                    <li>
+                        <a class="fa fa-sliders" href="#shoppingbag"></a>
+                    </li>
+                    
+                </ul>
+                
+                    
+                
+                </div>
+            </div><!-- topbar -->
+
+            <section>
+                <div class="gap gray-bg">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row" id="page-contents">
+                                    <div class="col-lg-3 d-sm-none d-md-block">
+
+                                    </div><!-- sidebar -->
+                                    <div class="col-lg-6">
+                                        <div class="central-meta">
+                                            <div class="new-postbox">
+
+                                                <div class="journal-container">
+                                                    <!-- Image -->
+                                                    <img
+                                                        src="./images/journal.png"
+                                                        alt="Daily Journal Poster">
+
+                                                    <!-- Text -->
+                                                    <h1
+                                                        class="text-center">Daily
+                                                        Journal</h1>
+                                                    <div class="journal-text">
+                                                        Taking the time to
+                                                        reflect on your
+                                                        thoughts and feelings is
+                                                        a powerful
+                                                        step towards
+                                                        understanding
+                                                        yourself better.
+                                                    </div>
+                                                    <button
+                                                        class="next-button w-100"
+                                                        onclick="showQuestion()">Next</button>
+                                                </div>
+
+                                                <div class="question-container"
+                                                    id="questionContainer">
+                                                    <p id="question"
+                                                        class="text-dark">Question:
+                                                        How was your
+                                                        day?</p>
+                                                    <textarea
+                                                        id="answerTextarea"
+                                                        rows="8" cols="50"
+                                                        placeholder="Write your answer here..."></textarea>
+                                                    <button type="button"
+                                                        class="next-button w-100"
+                                                        onclick="SubmitJournalAnswer()">send</button>
+                                                </div>
+
+                                            </div>
+                                        </div><!-- add post new box -->
+
+                                    </div><!-- centerl meta -->
+                                    <!-- sidebar -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+        </div>
+        </div>
+       
+
+        <script data-cfasync="false"
+            src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script
+            src="js/main.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/map-init.js"></script>
+        <script src="./js/journal.js"></script>
+
+        <script>
+            function SubmitJournalAnswer() {
+            const answer = document.getElementById('answerTextarea').value;
+            const uid = localStorage.getItem('uid');
+        
+            if (!uid) {
+                showToast("User ID not found. Please log in.");
+                return;
+            }
+        
+            try {
+                const response = await fetch('http://127.0.0.1:5000/submit-daily-journal-answer', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ uid: uid, answer: answer })
+                });
+        
+                const result = await response.json();
+                const sentimentMessage = `Sentiment: ${result.sentiment}`;
+                showToast(`${result.message} - ${sentimentMessage}`);
+                document.getElementById('answerTextarea').value = ""; // Clear the textarea after submission
+            } catch (error) {
+                console.log("Error submitting journal answer:", error);
+                showToast("Failed to submit journal answer. Please try again.");
+            }
+        }
+        
+        function showToast(message) {
+            const messageToast = document.getElementById('messageToast');
+            
+            // Set the message content
+            messageToast.innerText = message;
+            
+            // Make the toast visible with a smooth transition
+            messageToast.style.display = 'block';
+            setTimeout(() => {
+                messageToast.style.opacity = 1; // Fade in
+            }, 10); // Small delay to trigger the transition
+            
+            // Automatically close after 5 seconds
+            setTimeout(() => {
+                closeToast(); // Close after 5 seconds
+            }, 5000);
+        }
+        
+        function closeToast() {
+            const messageToast = document.getElementById('messageToast');
+            
+            // Apply fade-out effect
+            messageToast.style.opacity = 0; // Fade out
+
+            // Wait for the animation to finish before hiding the toast
+            setTimeout(() => {
+                messageToast.style.display = 'none'; // Hide the toast completely after fading out
+            }, 1000); // Match this timeout with the fade-out duration
+        }
+        
+        
+        </script>
+
+    </body>
+
+</html>

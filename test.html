@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h1>Enter Text for Sentiment Analysis</h1>
+    <textarea id="text-input" rows="4" cols="50" placeholder="Enter text here..."></textarea>
+    <button onclick="analyzeSentiment()">Analyze Sentiment</button>
+
+    <p id="result"></p>
+
+    <script>
+        function analyzeSentiment() {
+            const text = document.getElementById("text-input").value;
+
+            // Call the Python script via a server (using Node.js or an API)
+            fetch("http://localhost:5000/analyze_sentiment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ text: text }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = "Sentiment: " + data.sentiment;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>

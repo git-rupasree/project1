@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content />
+    <meta name="keywords" content />
+    <title>Hackathon</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16" />
+
+    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="./css/addstudent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/feed.js" defer></script>
+    <script src="./js/mood.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+      integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/protected.js"></script>
+    <script src="./js/score.js"></script>
+    <link rel="stylesheet" href="./css/like.css" />
+    <link rel="stylesheet" href="./css/mood.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/network.js" defer></script>
+    <script>
+      navigator.serviceWorker.register("./js/service-worker.js");
+    </script>
+    <link rel="manifest" href="manifest.json" />
+  </head>
+
+  <body>
+    <!--<div class="se-pre-con"></div>-->
+    <div class="message-toast" id="messageToast">
+      <button class="close-btn" onclick="closeToast()">X</button>
+    </div>
+
+    <button id="popup-button" class="popup-button">Open</button>
+
+    <div class="mood-modal bg-light p-5 rounded popup-container" id="popup">
+      <div class="new-postbox">
+        <div class="newpst-input">
+          <h6>How Are You Feeling Today?</h6>
+          <p>Click on an emoji to express your mood:</p>
+          <div class="emojis-container">
+            <div class="emojis">
+              <span class="emoji" data-mood="amazing">😊</span>
+              <span class="emoji" data-mood="happy">😄</span>
+              <span class="emoji" data-mood="terrible">😩</span>
+              <span class="emoji" data-mood="sad">😢</span>
+              <span class="emoji" data-mood="bad">😞</span>
+            </div>
+            <div class="mood-names">
+              <span class="mood-name">Amazing</span>
+              <span class="mood-name">Happy</span>
+              <span class="mood-name">Terrible</span>
+              <span class="mood-name">Sad</span>
+              <span class="mood-name">Bad</span>
+            </div>
+          </div>
+          <button class="track-button" style="display: none">Track</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-layout">
+      <div class="responsive-header">
+        <div class="mh-head first Sticky">
+          <span class="mh-btns-left">
+            <a class href="#menu"><i class="fa fa-align-justify"></i></a>
+          </span>
+          <span class="mh-text">
+            <a href="newsfeed.html" title
+              ><img
+                src="images/fav.png"
+                alt=""
+                style="width: 70px; height: auto"
+            /></a>
+          </span>
+          <span class="mh-btns-right">
+            <a class="fa fa-sliders" href="#shoppingbag"></a>
+          </span>
+        </div>
+        <div class="mh-head second">
+          <form class="mh-form">
+            <input placeholder="search" />
+            <a href="#/" class="fa fa-search"></a>
+          </form>
+        </div>
+        <nav id="menu" class="res-menu">
+          <ul>
+            <li><a href="index.html" title="">Home</a></li>
+            <li><a href="journal.html" title> Daily Journal</a></li>
+            <li><a href="groups.html" title="">Book Appointment</a></li>
+            <li><a href="messages.html" title="">Messages</a></li>
+            <li>
+              <a href="edit-account-setting.html" title=""
+                >edit account setting</a
+              >
+            </li>
+            <li><a href="edit-password.html" title="">edit-password</a></li>
+            <li><a href="logout.html" title="">Logout</a></li>
+          </ul>
+        </nav>
+        <nav id="shoppingbag">
+          <div>
+            <div>
+              <div id="feature2">
+                <a id="username"><i class="ti-user"></i></a>
+                <div id="moodChartSelect"></div>
+                <canvas id="moodChart"></canvas>
+                <div
+                  id="moodChartControl"
+                  class="d-flex justify-content-space-between"
+                ></div>
+
+                <div id="averagemoodscore"></div>
+                <div id="streak-data"></div>
+                <div id="no-graph-message"></div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="topbar stick">
+        <div class="logo">
+          <a title href="index.html"
+            ><img src="images/fav.png" alt="" style="width: 70px; height: auto"
+          /></a>
+        </div>
+
+        <div class="top-area">
+          <ul class="main-menu">
+            <li>
+							<a href="index.html" title="">Home</a>
+
+						</li>
+            <li>
+              <a href="newsfeed.html" title>Community</a>
+            </li>
+            <li><a href="journal.html" title> Daily Journal</a></li>
+            
+
+            <li><a href="groups.html" title>book Appointment</a></li>
+          </ul>
+          <ul class="main-menu menu-2">
+            <li>
+              <a
+                ><img
+                  src="images/resources/defaultpic.jpg"
+                  alt
+                  class="adminlogo"
+              /></a>
+
+              <ul>
+                <li>
+                  <a id="username"><i class="ti-user"></i></a>
+                </li>
+                <li>
+                  <a href="edit-account-setting.html" title
+                    >edit account setting</a
+                  >
+                </li>
+                <li>
+                  <a href="edit-password.html" title>edit-password</a>
+                </li>
+                <li>
+                  <a href="logout.html" title
+                    ><i class="ti-power-off"></i>log out</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="fa fa-sliders" href="#shoppingbag"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <section>
+        <div class="gap gray-bg">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row" id="page-contents">
+                  <div class="col-lg-3">
+                    <aside class="sidebar static">
+                      <div class="widget">
+                        <h4 class="widget-title">Shortcuts</h4>
+                        <ul class="naves">
+                          <li>
+                            <i class="ti-clipboard"></i>
+                            <a href="newsfeed.html" title>Community</a>
+                          </li>
+                          <li>
+                            <i class="ti-comments-smiley"></i>
+                            <a href="groups.html" title="">Book Appointment</a>
+                          </li>
+
+                          <li>
+                            <i class="ti-power-off"></i>
+                            <a title id="logout">Logout</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="widget d-none d-sm-block">
+                        <div class="d-none">
+                          <img src="./images/faq.png" alt="" id="banner" />
+                        </div>
+                      </div>
+                    </aside>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="central-meta">
+                      <div class="new-postbox">
+                        <figure>
+                          <img src="./images/resources/defaultpic.jpg" alt />
+                        </figure>
+                        <div class="newpst-input">
+                          <form id="createPostForm">
+                            <textarea
+                              rows="1"
+                              placeholder="enter title"
+                              type="text"
+                              id="title"
+                              name="title"
+                            ></textarea>
+                            <textarea
+                              rows="5"
+                              placeholder="write something"
+                              id="description"
+                              name="description"
+                            ></textarea>
+                            <div class="attachments">
+                              <ul>
+                                <li>
+                                  <i class="fa fa-image"></i>
+                                  <label class="fileContainer">
+                                    <input
+                                      type="file"
+                                      id="image"
+                                      name="image"
+                                      accept="image/*"
+                                    />
+                                  </label>
+                                </li>
+
+                                <li>
+                                  <input
+                                    type="hidden"
+                                    name="uid"
+                                    id="uid"
+                                    value
+                                  />
+                                </li>
+                                <li>
+                                  <button type="reset">Reset</button>
+                                  <button type="submit">Post</button>
+                                </li>
+                              </ul>
+                            </div>
+                          </form>
+                          <img
+                            id="imagePreview"
+                            alt="Image Preview"
+                            style="max-width: 100%; display: none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- add post new box -->
+                    <div class="loadMore">
+                      <div class="central-meta item" id="posts-container"></div>
+					  <div id="loading" style="display: none;" >
+						<div id="loading-div" class="posts-loading "></div>
+					  </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+    </div>
+
+    <script src="js/main.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/map-init.js"></script>
+  </body>
+</html>

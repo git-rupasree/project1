@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content />
+		<meta name="keywords" content />
+		<title>Hackathon</title>
+		<link rel="icon" href="images/fav.png" type="image/png" sizes="16x16">
+
+		<link rel="stylesheet" href="css/main.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/color.css">
+		<link rel="stylesheet" href="css/responsive.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./js/doctor/unauth.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="./js/network.js" defer></script>
+
+		<script>navigator.serviceWorker.register("js/service-worker.js")</script> 
+		<link rel="manifest" href="manifest.json" />
+	</head>
+	<script>
+		
+	</script>
+	<body onload="join()">
+		<!--<div class="se-pre-con"></div>-->
+		<div class="theme-layout">
+			<div class="message-toast" id="messageToast">
+				<button class="close-btn" onclick="closeToast()">X</button>
+			</div>
+
+			<div class="responsive-header">
+				<div class="mh-head first Sticky">
+					<span class="mh-btns-left">
+						<a class href="#menu"><i class="fa fa-align-justify"></i></a>
+					</span>
+					<span class="mh-text">
+						<a href="community.html" title><img src="images/fav.png" alt="" style="width: 70px;height: auto;"></a>
+					</span>
+					
+				</div>
+				<div class="mh-head second">
+					<form class="mh-form">
+						<input placeholder="search" />
+						<a href="#/" class="fa fa-search"></a>
+					</form>
+				</div>
+				<nav id="menu" class="res-menu">
+					<ul>
+						<li><a href="index2.html" title="">Home</a></li>
+						<li><a href="community.html" title="">Community</a></li>
+						<li><a href="messages.html" title="">Messages</a></li>
+						<li><a href="clients.html" title="">Students</a></li>
+						<li><a href="inbox.html" title="">send reminder</a></li>
+						<li><a href="account.html" title="">Account settings</a></li>
+						<li><a href="doctorlogout.html" title="">Logout</a></li>
+			</ul>				</nav>
+			
+			</div><!-- responsive header -->
+
+			<div class="topbar stick">
+				<div class="logo">
+					<a title href="community.html"><img src="images/fav.png" alt="" style="width: 70px;height: auto;"></a>
+				</div>
+
+				<div class="top-area">
+					<ul class="main-menu">
+						
+						<li><a href="index2.html" title="">Home</a></li>
+						<li><a href="community.html" title="">Community</a></li>
+						<li><a href="chatting.html" title="">Messages</a></li>
+						<li><a href="account.html" title="">Account settings</a></li>
+						<li><a href="doctorlogout.html" title="">Logout</a></li>
+
+					</ul>
+					<ul class="setting-area">
+						
+						<li><a href="community.html" title="Home" data-ripple><i
+									class="ti-home"></i></a></li>
+
+					
+					</ul>
+					<div class="user-img">
+						  <img src="images/resources/defaultpic.jpg" alt 
+ class="adminlogo">
+ 
+						<div class="user-setting ">
+
+							<a href="#" title><i class="ti-pencil-alt"></i>edit profile</a>
+							<a href="account.html" title><i class="ti-settings"></i>account setting</a>
+							<a title id="logout"><i class="ti-power-off"></i>log out</a>
+						</div>
+					</div>
+					
+				</div>
+			</div><!-- topbar -->
+
+			
+		<div class="gap gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row" id="page-contents">
+							<!-- sidebar -->
+							<div class="col-lg-12">
+								<button onclick="history.back()" class="btn">go back</button>
+								<div class="central-meta">
+									
+									<div class="messages">
+										
+										<div class="message-box">
+										
+											<div class="peoples-mesg-box">
+												<div class="conversation-head">
+													<figure><img src="images/resources/friend-avatar.jpg" alt=""></figure>
+													<i id="chatuname"></i>
+													<button onclick="opencall()" class="btn btn-success">Call</button>
+
+												</div>
+												<ul class="chatting-area">
+													
+												</ul>
+												
+												<div class="message-text-container d-flex">
+													
+														<textarea id="message-input"></textarea>
+														<button class="btn" title="send"   onclick="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>	
+							</div><!-- centerl meta -->
+							<div class="col-lg-3">
+								
+							</div><!-- sidebar -->
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	
+	
+</div>
+	
+	
+	<script src="js/main.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.3.2/dist/socket.io.min.js"></script>
+    <script src="./js/chatting.js" defer></script>
+
+</body>	
+
+</html>
